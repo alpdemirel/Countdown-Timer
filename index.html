@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Countdown Timer<br></h1>
+    <h5>by Alp Demirel</h5>
+    <form>
+        <label for="hour">Hour:</label><br>
+        <input type="number" id="hour" name="hour"><br>
+        <label for="min">Minutes:</label><br>
+        <input type="number" id="min" name="min"><br>
+        <label for="sec">Seconds:</label><br>
+        <input type="number" id="sec" name="sec">
+    </form>
+
+    <button type="button" onclick="startTimer()">Start</button>
+    <button type="button" onclick="stopTimer()">Stop</button>
+    <button type="button" onclick="resumeTimer()">Resume</button>
+    <button type="button" onclick="resetTimer()">Reset</button>
+
+    <div id="countdown" class="timer"></div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
