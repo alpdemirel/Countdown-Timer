@@ -4,8 +4,12 @@ let isRunning = false;
 let isPaused = false;
 
 function startTimer() {
+    const startButton = document.getElementById('startButton');
+
     if (isRunning && !isPaused) {
         stopTimer();
+        startButton.textContent = 'Resume';
+        startButton.className = 'resume-button';
     } else {
         if (!isPaused) {
             const hours = parseInt(document.getElementById('hour').value) || 0;
@@ -22,6 +26,8 @@ function startTimer() {
                 countdownElement.innerHTML = "Time's up!";
                 isRunning = false;
                 isPaused = false;
+                startButton.textContent = 'Start';
+                startButton.className = 'start-button';
                 return;
             }
 
@@ -35,13 +41,18 @@ function startTimer() {
 
         isRunning = true;
         isPaused = false;
+        startButton.textContent = 'Stop';
+        startButton.className = 'stop-button';
     }
 }
 
 function stopTimer() {
     clearInterval(interval);
-    isRunning = true;
+    isRunning = false; // Update isRunning to false when stopping the timer
     isPaused = true;
+    const startButton = document.getElementById('startButton');
+    startButton.textContent = 'Resume';
+    startButton.className = 'resume-button';
 }
 
 function resetTimer() {
@@ -53,4 +64,8 @@ function resetTimer() {
     remainingTime = 0;
     isRunning = false;
     isPaused = false;
+
+    const startButton = document.getElementById('startButton');
+    startButton.textContent = 'Start';
+    startButton.className = 'start-button';
 }
