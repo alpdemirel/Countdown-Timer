@@ -33,6 +33,8 @@ input[type="number"] {
     box-sizing: border-box;
 }
 
+
+
 button {
     color: white;
     padding: 10px 20px;
@@ -41,6 +43,11 @@ button {
     margin-bottom: 6px;
     cursor: pointer;
     font-size: 16px;
+}
+
+.button-container {
+    display: flex;
+    gap: 5px; 
 }
 
 button:hover {
@@ -62,6 +69,7 @@ button:hover {
 .reset-button {
     background-color: gray;
 }
+
 
 .timer {
     font-size: 48px;
