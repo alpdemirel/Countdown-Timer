@@ -66,7 +66,6 @@ function resetTimer() {
 
   switch (true) {
       case (isRunning && !isPaused):
-          clearInterval(interval);
 
           const stamp = remainingTime;
           const stampHourDisp = Math.floor(stamp / 3600);
