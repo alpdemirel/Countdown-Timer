@@ -5,6 +5,8 @@ let isPaused = false;
 
 function startTimer() {
     const startButton = document.getElementById('startButton');
+    resetButton.textContent = 'Timestamp';
+    resetButton.className = 'stamp-button';
 
     if (isRunning && !isPaused) {
         stopTimer();
@@ -48,24 +50,60 @@ function startTimer() {
 
 function stopTimer() {
     clearInterval(interval);
-    isRunning = false; // Update isRunning to false when stopping the timer
+    isRunning = false; 
     isPaused = true;
     const startButton = document.getElementById('startButton');
     startButton.textContent = 'Resume';
     startButton.className = 'resume-button';
+    resetButton.textContent = 'Reset';
+    resetButton.className = 'reset-button';
 }
 
 function resetTimer() {
-    clearInterval(interval);
-    document.getElementById('hour').value = '';
-    document.getElementById('min').value = '';
-    document.getElementById('sec').value = '';
-    document.getElementById('countdown').innerHTML = '';
-    remainingTime = 0;
-    isRunning = false;
-    isPaused = false;
+  const resetButton = document.getElementById('resetButton'); 
+  const timestampsContainer = document.getElementById('timestampsContainer');
+  const startButton = document.getElementById('startButton');
 
-    const startButton = document.getElementById('startButton');
-    startButton.textContent = 'Start';
-    startButton.className = 'start-button';
+  switch (true) {
+      case (isRunning && !isPaused):
+          clearInterval(interval);
+
+          const stamp = remainingTime;
+          const stampHourDisp = Math.floor(stamp / 3600);
+          const stampMinDisp = Math.floor((stamp % 3600) / 60);
+          const stampSecDisp = stamp % 60;
+
+          const timestampElement = document.createElement('div');
+          timestampElement.className = 'timestamp';
+          timestampElement.textContent = `${stampHourDisp}h ${stampMinDisp}m ${stampSecDisp}s`;
+
+          timestampsContainer.appendChild(timestampElement);
+
+          resetButton.textContent = 'Timestamp';
+          resetButton.className = 'stamp-button';
+          break;
+
+      case (isRunning && isPaused):
+          document.getElementById('hour').value = '';
+          document.getElementById('min').value = '';
+          document.getElementById('sec').value = '';
+          document.getElementById('countdown').innerHTML = '';
+          break;
+
+      default:
+          clearInterval(interval);
+          document.getElementById('hour').value = '';
+          document.getElementById('min').value = '';
+          document.getElementById('sec').value = '';
+          document.getElementById('countdown').innerHTML = '';
+          remainingTime = 0;
+          isRunning = false;
+          isPaused = false;
+          startButton.textContent = 'Start';
+          startButton.className = 'start-button';
+          timestampsContainer.innerHTML = ''; // Clear all previous timestamps
+          break;
+  }
 }
+
+

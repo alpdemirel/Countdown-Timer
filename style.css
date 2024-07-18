@@ -70,6 +70,10 @@ button:hover {
     background-color: gray;
 }
 
+.stamp-button {
+    background-color: rgb(255, 0, 234);
+}
+
 
 .timer {
     font-size: 48px;
@@ -81,4 +85,20 @@ button:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     min-width: 250px;
     text-align: center;
+}
+
+.timestamp-container {
+    max-height: 300px;
+    overflow-y: scroll;
+    width: 300px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.timestamp {
+    font-size: 20px; 
+    margin-top: 5px;
 }
